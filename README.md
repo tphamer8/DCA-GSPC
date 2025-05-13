@@ -1,4 +1,4 @@
-# DCA S&P 500 (SPY)
+# Dollar Cost Avg S&P 500 (SPY)
 
 Notes:
 S&P 500 Started March 4, 1957
