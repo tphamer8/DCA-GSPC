@@ -34,4 +34,12 @@ CREATE TABLE stock_monthly (
     UNIQUE(ticker, week_start_date)
 )
 
+CREATE TABLE dividends (
+    ticker varchar,
+    date DATE,
+    dividend FLOAT,
+    PRIMARY(ticker, date)
+    FOREIGN KEY (ticker) REFERENCES stock_daily(ticker) 
+)
+
 
