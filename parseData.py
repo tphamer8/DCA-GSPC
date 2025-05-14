@@ -4,7 +4,7 @@ import psycopg2
 import yfinance as yf
 
 # load environment variables from .env
-load_dotenv
+load_dotenv()
 
 # Database connection variables from .env
 DB_HOST = os.getenv('DB_HOST')
@@ -49,11 +49,11 @@ for index, row in data_daily.iterrows():
 
 # Insert statements for dividends table
 dividends_data = yf.Ticker(ticker).dividends
-for date, dividend in dividends_data.item():
+for date, dividend in dividends_data.items():
     cursor.execute("""
     INSERT INTO dividends (ticker, date, dividend)
     VALUES (%s, %s, %s)
-    ON CONFLICT (ticker, date) DO NOTZHING;
+    ON CONFLICT (ticker, date) DO NOTHING;
     """, (
         ticker,
         date.date(),
