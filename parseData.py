@@ -47,6 +47,38 @@ for index, row in data_daily.iterrows():
         float(row['Volume'].iloc[0])
     ))
 
+# Insert statements for stock_weekly table
+for index, row in data_weekly.iterrows():
+    cursor.execute("""
+    INSERT INTO stock_weekly (ticker, week_start_date, open, close, high, low, volume)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (ticker, week_start_date) DO NOTHING;
+    """, (
+        ticker,
+        index.date(),
+        float(row['Open'].iloc[0]),
+        float(row['Close'].iloc[0]),
+        float(row['High'].iloc[0]),
+        float(row['Low'].iloc[0]),
+        float(row['Volume'].iloc[0])
+    ))
+
+# Insert statements for stock_monthly table
+for index, row in data_monthly.iterrows():
+    cursor.execute("""
+    INSERT INTO stock_monthly (ticker, month_start_date, open, close, high, low, volume)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (ticker, month_start_date) DO NOTHING;
+    """, (
+        ticker,
+        index.date(),
+        float(row['Open'].iloc[0]),
+        float(row['Close'].iloc[0]),
+        float(row['High'].iloc[0]),
+        float(row['Low'].iloc[0]),
+        float(row['Volume'].iloc[0])
+    ))
+
 # Insert statements for dividends table
 dividends_data = yf.Ticker(ticker).dividends
 for date, dividend in dividends_data.items():

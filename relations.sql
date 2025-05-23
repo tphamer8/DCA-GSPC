@@ -45,3 +45,10 @@ CREATE TABLE dividends (
     dividend FLOAT,
     PRIMARY KEY (ticker, date)
 );
+
+
+-- Test data loading
+SELECT * FROM stock_daily;
+SELECT * FROM stock_weekly;
+SELECT * FROM stock_monthly;
+SELECT * FROM dividends;
