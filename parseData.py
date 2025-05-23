@@ -40,11 +40,11 @@ for index, row in data_daily.iterrows():
     """, (
         ticker,
         index.date(),
-        row['Open'],
-        row['Close'],
-        row['High'],
-        row['Low'],
-        row['Volume']
+        float(row['Open'].iloc[0]),
+        float(row['Close'].iloc[0]),
+        float(row['High'].iloc[0]),
+        float(row['Low'].iloc[0]),
+        float(row['Volume'].iloc[0])
     ))
 
 # Insert statements for dividends table
